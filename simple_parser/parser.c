@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <curl/curl.h>
 
 const char *ERROR_SSL_MESSAGE = "SSL peer certificate or SSH remote key was not OK";
@@ -36,7 +37,7 @@ int main(int argc, char *argv[])
 		{
 			fprintf(stderr, "curl_easy_perform() failed: %s\n",
 				curl_easy_strerror(result));
-			return EXIT_FAILURE;
+			exit(EXIT_FAILURE);
 		}
 	}
 	
@@ -46,11 +47,11 @@ int main(int argc, char *argv[])
     {
 		fprintf(stderr, "curl_easy_perform() failed: %s\n",
 				curl_easy_strerror(result));
-		return EXIT_FAILURE;
+		exit(EXIT_FAILURE);
 	}
 	
 	curl_easy_cleanup(curl);
 	fclose(output_file);
-
+	printf("Success!!!");
 	return EXIT_SUCCESS;
 }
