@@ -15,3 +15,10 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+
+void MainWindow::on_pushButton_clicked()
+{
+    QString URL = ui->textEdit->toPlainText();
+
+}
+
