@@ -26,8 +26,8 @@ class Ui_MainWindow
 public:
     QWidget *centralwidget;
     QLabel *label;
-    QTextEdit *textEdit;
-    QTextEdit *textEdit_2;
+    QTextEdit *url_text;
+    QTextEdit *html_text;
     QLabel *label_2;
     QPushButton *pushButton;
     QMenuBar *menubar;
@@ -43,12 +43,12 @@ public:
         label = new QLabel(centralwidget);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(11, 10, 151, 26));
-        textEdit = new QTextEdit(centralwidget);
-        textEdit->setObjectName(QString::fromUtf8("textEdit"));
-        textEdit->setGeometry(QRect(160, 10, 541, 26));
-        textEdit_2 = new QTextEdit(centralwidget);
-        textEdit_2->setObjectName(QString::fromUtf8("textEdit_2"));
-        textEdit_2->setGeometry(QRect(13, 73, 771, 381));
+        url_text = new QTextEdit(centralwidget);
+        url_text->setObjectName(QString::fromUtf8("url_text"));
+        url_text->setGeometry(QRect(160, 10, 541, 26));
+        html_text = new QTextEdit(centralwidget);
+        html_text->setObjectName(QString::fromUtf8("html_text"));
+        html_text->setGeometry(QRect(13, 73, 771, 381));
         label_2 = new QLabel(centralwidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setGeometry(QRect(330, 50, 161, 16));

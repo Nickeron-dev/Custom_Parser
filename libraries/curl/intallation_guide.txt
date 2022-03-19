@@ -1,0 +1,4 @@
+1. Put the folders (include and lib) to respective folders in qt MinGW
+compilation environment(approximate path: C:\Qt\6.2.3\mingw_64).
+2. Add to .pro file line: 'LIBS += -L<path to lib folder> -lcurl'.
+Example: LIBS += -LC:\Qt\6.2.3\mingw_64\lib -lcurl

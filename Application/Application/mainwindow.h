@@ -21,4 +21,11 @@ private slots:
 private:
     Ui::MainWindow *ui;
 };
+
+class Parser
+{
+public:
+    int parse_url(std::string url);
+};
+
 #endif // MAINWINDOW_H

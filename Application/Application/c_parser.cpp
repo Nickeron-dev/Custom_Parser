@@ -1,23 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <iostream>
 #include <curl/curl.h>
+#include <cstring>
+#include <string>
+#include "mainwindow.h"
 
 const char *ERROR_SSL_MESSAGE = "SSL peer certificate or SSH remote key was not OK";
 
-int main(int argc, char *argv[])
+int Parser::parse_url(std::string url)
 {
     CURL *curl;
     CURLcode result;
 
-    if(argc != 2) {
-        printf("Usage: %s URL\n", argv[0]);
-        return EXIT_FAILURE;
-    }
-
     curl = curl_easy_init();
 
-    printf("SITE: %s\n", argv[1]);
-    curl_easy_setopt(curl, CURLOPT_URL, argv[1]);
+    std::cout << "SITE: " << url << std::endl;
+    curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
 
     FILE *output_file = fopen("index.html", "w");
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, output_file);
@@ -27,17 +26,18 @@ int main(int argc, char *argv[])
     {
         if (strcmp(curl_easy_strerror(result), ERROR_SSL_MESSAGE) == 0)
         {
-            printf("Retry without ssl verifiers...\n");
+            std::cout << "Retry without ssl verifiers..." << std::endl;
             curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
             curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
-            curl_easy_setopt(curl, CURLOPT_URL, argv[1]);
+            curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
             curl_easy_setopt(curl, CURLOPT_WRITEDATA, output_file);
         }
         else
         {
-            fprintf(stderr, "curl_easy_perform() failed: %s\n",
-                curl_easy_strerror(result));
-            exit(EXIT_FAILURE);
+            std::cerr << "curl_easy_perform() failed: "
+                      << curl_easy_strerror(result) << std::endl;
+            fclose(output_file);
+            return EXIT_FAILURE;
         }
     }
 
@@ -45,13 +45,14 @@ int main(int argc, char *argv[])
 
     if(result != CURLE_OK)
     {
-        fprintf(stderr, "curl_easy_perform() failed: %s\n",
-                curl_easy_strerror(result));
-        exit(EXIT_FAILURE);
+        std::cerr << "curl_easy_perform() failed: "
+                  << curl_easy_strerror(result) << std::endl;
+        fclose(output_file);
+        return EXIT_FAILURE;
     }
 
     curl_easy_cleanup(curl);
     fclose(output_file);
-    printf("Success!!!");
+    std::cout << "Success!!!" << std::endl;
     return EXIT_SUCCESS;
 }

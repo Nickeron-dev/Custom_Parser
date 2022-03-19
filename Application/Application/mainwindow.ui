@@ -27,7 +27,7 @@
      <string>Insert the URL of a target</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit">
+   <widget class="QTextEdit" name="url_text">
     <property name="geometry">
      <rect>
       <x>160</x>
@@ -37,7 +37,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit_2">
+   <widget class="QTextEdit" name="html_text">
     <property name="geometry">
      <rect>
       <x>13</x>
