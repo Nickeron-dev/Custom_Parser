@@ -24,11 +24,16 @@ void MainWindow::on_pushButton_clicked()
     std::cout << "URL: " << URL.toStdString() << std::endl;
     Parser parser;
     parser.parse_url(URL.toStdString());
-    std::fstream file("index.html");
-    std::string html_string;
-    file >> html_string;
-    QString html_qstring(html_string.c_str());
-    ui->html_text->setText(html_qstring);
 
+    std::ifstream file;
+    file.open("../build-Application-Desktop_Qt_6_2_3_MinGW_64_bit-Debug/index.html");
+    std::string html_string {}, buffer {};
+    while(!file.eof()) {
+        getline(file, buffer);
+        html_string += buffer + "\n";
+
+    }
+    ui->html_text->setText(html_string.c_str());
+    file.close();
 }
 
