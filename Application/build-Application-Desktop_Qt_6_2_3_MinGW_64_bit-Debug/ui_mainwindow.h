@@ -48,10 +48,10 @@ public:
         url_text->setGeometry(QRect(160, 10, 541, 26));
         html_text = new QTextEdit(centralwidget);
         html_text->setObjectName(QString::fromUtf8("html_text"));
-        html_text->setGeometry(QRect(13, 73, 771, 381));
+        html_text->setGeometry(QRect(10, 90, 771, 381));
         label_2 = new QLabel(centralwidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setGeometry(QRect(330, 50, 161, 16));
+        label_2->setGeometry(QRect(330, 70, 171, 16));
         label_2->setAlignment(Qt::AlignCenter);
         pushButton = new QPushButton(centralwidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
@@ -74,7 +74,7 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "Insert the URL of a target", nullptr));
-        label_2->setText(QCoreApplication::translate("MainWindow", "Choose the text to be parsed", nullptr));
+        label_2->setText(QCoreApplication::translate("MainWindow", "Here will be html", nullptr));
         pushButton->setText(QCoreApplication::translate("MainWindow", "Done", nullptr));
     } // retranslateUi
 

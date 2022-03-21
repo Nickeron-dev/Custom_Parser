@@ -40,8 +40,8 @@
    <widget class="QTextEdit" name="html_text">
     <property name="geometry">
      <rect>
-      <x>13</x>
-      <y>73</y>
+      <x>10</x>
+      <y>90</y>
       <width>771</width>
       <height>381</height>
      </rect>
@@ -51,13 +51,13 @@
     <property name="geometry">
      <rect>
       <x>330</x>
-      <y>50</y>
-      <width>161</width>
+      <y>70</y>
+      <width>171</width>
       <height>16</height>
      </rect>
     </property>
     <property name="text">
-     <string>Choose the text to be parsed</string>
+     <string>Here will be html</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
